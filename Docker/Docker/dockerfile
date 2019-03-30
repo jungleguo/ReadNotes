@@ -1,0 +1,14 @@
+FROM docker.neg/genesis/aspnetcore:2.1.6-runtime
+MAINTAINER DAE
+
+WORKDIR /opt/$PROJECT_NAME
+
+ENV ASPNETCORE_ENVIRONMENT Development
+
+
+CMD ["dotnet","$namespace.WebAPI.dll"]
+
+COPY $PROJECT_NAME /opt/$PROJECT_NAME
+
+RUN docker build -t docker.neg/$DOCKER_IMAGE
+RUN docker push docker.neg/$DOCKER_IMAGE
