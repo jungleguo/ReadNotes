@@ -6,9 +6,8 @@ WORKDIR /opt/$PROJECT_NAME
 ENV ASPNETCORE_ENVIRONMENT Development
 
 
-CMD ["dotnet","$namespace.WebAPI.dll"]
+CMD ["dotnet","$namespace.dll"]
 
 COPY $PROJECT_NAME /opt/$PROJECT_NAME
 
-RUN docker build -t docker.neg/$DOCKER_IMAGE
-RUN docker push docker.neg/$DOCKER_IMAGE
+RUN buildDeps = docker build -t docker.neg/$DOCKER_IMAGE

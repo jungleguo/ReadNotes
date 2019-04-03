@@ -56,3 +56,25 @@ Sending build context to Docker daemon 2.048 kB
 ```
 指定某个文件作为 ```Dockerfile ```
 
+### 指令
+-COPY-
+```COPY [--chown=<user>:<group>]```
+```COPY [--chown=<user>:<group>]```
+-ADD-
+```
+
+```
+-CMD-
+```shell格式: CMD <命令>```
+```exec格式：CMD ["可执行文件"， “参数1”, "参数2"]```
+Docker容器就是一个进程。
+CMD指令就是用于指定默认容器主进程启动命令的。
+在指令格式上一般推荐使用```exec```格式，这类格式在解析时会被解析为```JSON```数组。因此，一定要使用双引号```""```,而不是单引号。
+如果使用```shell ```格式，实际的命令会被包装为```sh -c```的参数形式进行执行。
+```
+CMD echo $HONE
+```
+实际执行会变为：
+```
+CMD ["sh", "-c", "echo $HOME"]
+```
